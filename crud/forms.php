@@ -1,6 +1,15 @@
 <?php
+
+// mysqli_connect --> establish the connection with the database
+// myslqli_query --> connects the query with the database
+// mysqli_numrows --> if any row exist in database or not
+// mysqli_fetch_assoc --> fetch the associative array
+
+// connection management
 include('connect.php');
-   ?>
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,21 +34,23 @@ include('connect.php');
     <input type="text" name="gender" class="form-control">
     <label for="name"> Email </label>
     <input type="email" name="email" class="form-control">
-    <input type="submit" name="save" value="Update" class="btn btn-primary">
+    <input type="submit" name="update" value="Update" class="btn btn-primary">
+    <input type="submit" name="delete" value="Delet" class="btn btn-primary">
 
 </form> 
 <?php
 if(isset($_POST['save'])){
    // $id = $_POST['Id'];
+    $id = $_POST['id'];
     $name = $_POST['name'];
     $age = $_POST['age'];
     $gender = $_POST['gender'];
     $email = $_POST['email'];
 
-$query = "INSERT INTO `students` ( `name`, `age`, `gender`, `email`) VALUES ( '$name', '$age', '$gender', '$email')";
+$query = "INSERT INTO `students` ('id', `name`, `age`, `gender`, `email`) VALUES ( '$id','$name', '$age', '$gender', '$email')";
 
 
-$result = mysqli_query($connection, $query);
+$result = mysqli_query($conn, $query);
 if(!$result){
     echo "query faild";
     

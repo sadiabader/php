@@ -1,9 +1,11 @@
 <?php
-include('connect.php');
-
+$conn = mysqli_connect("localhost", "root", "", "classC2");
+if(!$conn){
+    die("connection failed");
+}
 $sql = "select * from `students`";
-$fetch = mysqli_query($connection, $sql);
-$data = mysqli_fetch_assoc($fetch);
+$data = mysqli_query($conn, $sql);
+if (mysqli_num_rows($data) > 0 ){
 //print_r($data);
 
 //while($data = mysqli_fetch_assoc($fetch)){
@@ -27,7 +29,7 @@ $data = mysqli_fetch_assoc($fetch);
 </head>
 <body>
     
-<tabel class="table table-bordered text-center">
+<table class="table table-bordered text-center">
 <thead class="table table-dark">
 <tr>
 <th> Id </th>
@@ -36,21 +38,24 @@ $data = mysqli_fetch_assoc($fetch);
 <th> Gender </th>
 <th> Email </th>
 <th> update </th>
+<th> Delete </th>
 </tr>
 </thead>
 <tbody>
 <?php
-while($data = mysqli_fetch_assoc($fetch)){
+while($row = mysqli_fetch_assoc($data)){
 ?>
 <tr>
-<td><?php echo $data['id']; ?></td>
-<td><?php echo $data['name']; ?></td>
-<td><?php echo $data['age']; ?></td>
-<td><?php echo $data['gender']; ?></td>
-<td><?php echo $data['email']; ?></td>
-<td><a href="update.php?id=<?php echo $data['id'];?>"class="btn btn-warning"></a></td>
+<td><?php echo $row['id']; ?></td>
+<td><?php echo $row['name']; ?></td>
+<td><?php echo $row['age']; ?></td>
+<td><?php echo $row['gender']; ?></td>
+<td><?php echo $row['email']; ?></td>
+<td><a href="update.php?id=<?php echo $row['id']?>" class="btn btn-warning"> UPDATE </a></td>
+<td><a href="delete.php?id=<?php echo $row['id']?>" class="btn btn-warning"> Delete </a></td>
 </tr>
 <?php
+}
 }
 ?>
 </tbody>

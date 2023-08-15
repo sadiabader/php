@@ -2,14 +2,16 @@
 include('connect.php');
 
 $user_id = $_GET['id'];
+//echo $user_id;
 $sqlquery = "select * from `students` where id = '$user_id'";
 
-$res = mysqli_query($connection, $sqlquery);
+$res = mysqli_query($conn, $sqlquery);
 if(!$res){
     die("query failed");
 }
 if(mysqli_num_rows($res) > 0){
     while($row = mysqli_fetch_assoc($res)){
+        
 ?>
 
 <!DOCTYPE html>
@@ -26,9 +28,8 @@ if(mysqli_num_rows($res) > 0){
 <body>
  
 <div class="container">
-<form action="update.php" method="post" class="form-group">
-    <label for="name"> Id </label>
-    <input type="text" name="id" class="form-control" value="<?php echo $row['id']?>">
+<form action="updatedata.php" method="post" class="form-group">
+    <input type="hidden" name="id" class="form-control" value="<?php echo $row['id']?>">
     <label for="name"> Name </label>
     <input type="text" name="name" class="form-control" value="<?php echo $row['name']?>">
     <label for="name"> Age </label>
@@ -42,7 +43,7 @@ if(mysqli_num_rows($res) > 0){
 </form> 
 </div>
 <?php
-    }
+   }
 }
 ?>
 </body>
