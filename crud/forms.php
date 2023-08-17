@@ -34,8 +34,8 @@ include('connect.php');
     <input type="text" name="gender" class="form-control">
     <label for="name"> Email </label>
     <input type="email" name="email" class="form-control">
-    <input type="submit" name="update" value="Update" class="btn btn-primary">
-    <input type="submit" name="delete" value="Delet" class="btn btn-primary">
+    <input type="submit" name="save" value="Update" class="btn btn-primary">
+    <!--<input type="submit" name="save" value="Delete" class="btn btn-primary"> -->
 
 </form> 
 <?php
@@ -49,13 +49,13 @@ if(isset($_POST['save'])){
 
 $query = "INSERT INTO `students` ('id', `name`, `age`, `gender`, `email`) VALUES ( '$id','$name', '$age', '$gender', '$email')";
 
-
-$result = mysqli_query($conn, $query);
+$result = mysqli_query($connection, $query);
 if(!$result){
-    echo "query faild";
-    
+    echo "data insertion failed";
 }
-header('Location:http://localhost/practice_php/crud/forms.php');
+
+
+ header('Location:http://localhost/practice_php/crud/forms.php');
 }
 
 

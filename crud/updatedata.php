@@ -8,11 +8,11 @@ $AGE = $_POST['age'];
 $GENDER = $_POST['gender'];
 $EMAIL = $_POST['email'];
 
-$update = "update `students` set id = '$ID', name = '$NAME', age '$AGE',
+$update = "update `students` set name = '$NAME', age '$AGE',
  gender '$GENDER', email '$EMAIL' where id = $ID";
  
-$res = mysqli_query($conn, $update);
-if(!$res){
+$resu = mysqli_query($conn, $update);
+if(!$resu){
     die("query failed");
 }
 header('location:http://localhost/practice_php/crud/userall.php');

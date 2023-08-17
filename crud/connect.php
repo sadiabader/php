@@ -1,12 +1,11 @@
 
 <?php
-
-$conn = mysqli_connect("localhost", "root", "", "classc2");
-
-if($conn){
-    echo "connected";
+$connection = mysqli_connect("localhost", "root", "", "classc2");
+if($connection){
+    echo"connected";
 }
-else{
-    die("connection error");
-}
+    else{
+        die("connection error");
+    }
+
 ?>
