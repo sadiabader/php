@@ -5,7 +5,7 @@ if(!$conn){
 }
 $sql = "select * from `students`";
 $data = mysqli_query($conn, $sql);
-if (mysqli_num_rows($data) > 0 ){
+if (mysqli_num_rows($data) > 0){
 //print_r($data);
 
 //while($data = mysqli_fetch_assoc($fetch)){
@@ -37,6 +37,7 @@ if (mysqli_num_rows($data) > 0 ){
 <th> Age </th>
 <th> Gender </th>
 <th> Email </th>
+<th> Password </th>
 <th> update </th>
 <th> Delete </th>
 </tr>
@@ -51,6 +52,7 @@ while($row = mysqli_fetch_assoc($data)){
 <td><?php echo $row['age']; ?></td>
 <td><?php echo $row['gender']; ?></td>
 <td><?php echo $row['email']; ?></td>
+<td><?php echo $row['password']; ?></td>
 <td><a href="update.php?id=<?php echo $row['id']?>" class="btn btn-warning"> UPDATE </a></td>
 <td><a href="delete.php?id=<?php echo $row['id']?>" class="btn btn-warning"> Delete </a></td>
 </tr>

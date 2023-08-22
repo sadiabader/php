@@ -29,6 +29,7 @@ if(mysqli_num_rows($res) > 0){
  
 <div class="container">
 <form action="updatedata.php" method="post" class="form-group">
+<label for="name"> Id </label>
     <input type="hidden" name="id" class="form-control" value="<?php echo $row['id']?>">
     <label for="name"> Name </label>
     <input type="text" name="name" class="form-control" value="<?php echo $row['name']?>">

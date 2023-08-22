@@ -1,7 +1,7 @@
 
 <?php
-$connection = mysqli_connect("localhost", "root", "", "classc2");
-if($connection){
+$conn = mysqli_connect("localhost", "root", "", "classc2");
+if($conn){
     echo"connected";
 }
     else{
